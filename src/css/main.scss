@@ -1,0 +1,37 @@
+@mixin resolution($media) {
+  @if $media == 2048 {
+    @media only screen and (min-width: 2048px) { @content; }
+  }
+  @else if $media == 1920 {
+    @media only screen and (min-width: 1680px)  and (max-width: 2047px) { @content; }
+  }
+  @else if $media == 1366 {
+    @media only screen and (min-width: 1281px) and (max-width: 1679px) { @content; }
+  }
+  @else if $media == 1280 {
+    @media only screen and (min-width: 1153px) and (max-width: 1280px) { @content; }
+  }
+  @else if $media == 1152 {
+    @media only screen and (min-width: 981px) and (max-width: 1152px) { @content; }
+  }
+  @else if $media == 960 {
+    @media only screen and (min-width: 769px) and (max-width: 980px) { @content; }
+  }
+  @else if $media == 768 {
+    @media only screen and (min-width: 641px) and (max-width: 768px) and (orientation:portrait) { @content; }
+  }
+  @else if $media == 640 {
+    @media only screen and (max-width: 320px) { @content; }
+    @media only screen and (max-width: 980px) and (orientation:landscape){ @content; }
+    @media only screen and (max-width: 640px) and (orientation:portrait){ @content; }
+  }
+  @else if $media == '640-portrait' {
+    @media only screen and (max-width: 640px) and (orientation:portrait) { @content; }
+  }
+  @else if $media == '640-landscape' {
+    @media only screen and (max-width: 980px) and (orientation:landscape){ @content; }
+  }
+  @else if $media == 320 {
+    @media only screen and (max-width: 320px) and (orientation:portrait){ @content; }
+  }
+}

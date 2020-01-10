@@ -1,0 +1,19 @@
+@font-face {
+  font-family: Calibri;
+  src: url(Calibri/Calibri.ttf);
+}
+
+@font-face {
+  font-family: MinionPro-Semibold;
+  src: url(./MinionPro-Semibold.ttf);
+}
+
+@font-face {
+  font-family: MinionPro-It;
+  src: url(MinionPro-It.ttf);
+}
+
+@font-face {
+  font-family: MinionPro-Regular;
+  src: url(MinionPro-Regular.ttf);
+}

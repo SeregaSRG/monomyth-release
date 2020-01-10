@@ -1,0 +1,71 @@
+
+.options__buttons {
+  width: 255px;
+  margin-top: 16px;
+  .options__button {
+    width: 100%;
+    height: 40px;
+    background-color: #0a0a0a;
+    border-radius: 17px;
+    margin-bottom: 15px;
+    display: flex;
+    box-shadow: 7px 7px 13px rgba(0, 0, 0, .35);
+    &:last-child {
+      margin-bottom: 0;
+    }
+    .options-button__icon {
+      margin-left: 22px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      width: 52px;
+      img {
+        &.options__ads-icon {
+          height: 26px;
+        }
+        &.options__restore-icon {
+          height: 26px;
+        }
+        &.options__language-icon {
+          height: 28px;
+        }
+        &.options__achievements-icon {
+          height: 26px;
+        }
+        &.options__mail-icon {
+          height: 23px;
+        }
+        &.options__rate-icon {
+          height: 25px;
+        }
+      }
+    }
+    .options-button__label {
+      color: #f2f2f2;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      height: 100%;
+      font-family: "Calibri", sans-serif;
+    }
+  }
+  .options__twin-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    .options__button {
+      width: 47%;
+      .options-button__icon {
+        width: 44px;
+      }
+    }
+  }
+}
+.options__back-button {
+  width: 246px;
+  img {
+    width: 67px;
+    margin-left: -6px;
+    margin-top: -5px;
+  }
+}

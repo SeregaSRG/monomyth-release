@@ -1,0 +1,22 @@
+@keyframes card-animation {
+  from {
+  }
+  20% {
+    transform: scale(0.96);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes layer-animation {
+  from {
+  }
+  20% {
+    transform: translate3d(0, 72px, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+

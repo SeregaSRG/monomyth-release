@@ -1,1 +1,1 @@
-monomyth-release
+monomyth
