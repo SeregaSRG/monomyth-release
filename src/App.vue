@@ -8,7 +8,9 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  mounted () {
+  }
 }
 </script>
 
@@ -19,12 +21,19 @@ export default {
   html {
     -webkit-font-smoothing: antialiased
   }
-  body {-webkit-transform:translate3d(0,0,0);}
+  body {
+    -webkit-transform:translate3d(0,0,0);
+  }
   #q-app {
     width: 100vw;
     height: 100vh;
     background-color: #e5e5e5;
     overflow: hidden;
+    /*
+    padding-top: constant(safe-area-inset-top);
+    padding-top: calc(36px + env(safe-area-inset-top));
+    box-sizing: border-box;
+    */
   }
   .fade-enter-active, .fade-leave-active {
     transition: opacity .2s;
@@ -70,7 +79,10 @@ export default {
   * {
     transition: .3s;
     font-family: Calibri;
-    -webkit-font-smoothing: antialiased
+    -webkit-font-smoothing: antialiased;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
   }
 
   .covert {
@@ -163,5 +175,21 @@ export default {
 
   .text__wrapper {
     color: #393838;
+  }
+  .more-dots {
+    position: absolute;
+    right: 16px;
+    bottom: 8px;
+    font-size: 20px;
+  }
+  pre {
+    white-space: pre-wrap;
+  }
+  .global-star {
+    background-image: url("./assets/Star.png");
+    background-size: contain;
+    width: 24px;
+    height: 24px;
+    margin: 18px auto 22px auto;
   }
 </style>

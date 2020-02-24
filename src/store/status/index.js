@@ -9,7 +9,8 @@ const state = {
     text: null
   },
   currentCycleStage: null,
-  transitionsTexts: false
+  transitionsTexts: false,
+  isDream: false
 }
 
 const getters = {
@@ -19,7 +20,8 @@ const getters = {
   currentWorldIndex: (state) => state.currentWorldIndex,
   currentStage: (state) => state.currentStage,
   currentCycleStage: (state) => state.currentCycleStage,
-  isTransitionsTexts: (state) => state.transitionsTexts
+  isTransitionsTexts: (state) => state.transitionsTexts,
+  isDream: (state) => state.isDream
 }
 
 const mutations = {
@@ -54,6 +56,9 @@ const mutations = {
   },
   SET_TRANSITIONS_TEXTS (state, data) {
     state.transitionsTexts = data
+  },
+  SET_DREAM (state, data) {
+    state.isDream = data
   }
 }
 

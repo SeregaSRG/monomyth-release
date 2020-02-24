@@ -29,7 +29,7 @@ export default {
           description: 'Visit one Stage',
           value: 1,
           max: 5,
-          icon: '../../../../../assets/info/options/achievements/icons/beginner.png',
+          icon: require('../../../../assets/info/options/achievements/icons/beginner.png'),
           completed: true
         },
         {
@@ -37,7 +37,7 @@ export default {
           description: 'Visit all Stages',
           value: 1,
           max: 5,
-          icon: '../../../../../assets/info/options/achievements/icons/traveler.png',
+          icon: require('../../../../assets/info/options/achievements/icons/traveler.png'),
           completed: true
         },
         {
@@ -45,7 +45,7 @@ export default {
           description: 'Share any 3 Descriptions',
           value: 1,
           max: 5,
-          icon: '../../../../../assets/info/options/achievements/icons/sharer.png',
+          icon: require('../../../../assets/info/options/achievements/icons/sharer.png'),
           completed: true
         },
         {
@@ -53,7 +53,7 @@ export default {
           description: 'Enter the DREAM',
           value: 1,
           max: 5,
-          icon: '../../../../../assets/info/options/achievements/icons/dreamer.png',
+          icon: require('../../../../assets/info/options/achievements/icons/dreamer.png'),
           completed: false
         },
         {
@@ -61,7 +61,7 @@ export default {
           description: 'Ring the Bell 42 times',
           value: 1,
           max: 5,
-          icon: '../../../../../assets/info/options/achievements/icons/ringer.png',
+          icon: require('../../../../assets/info/options/achievements/icons/ringer.png'),
           completed: true
         }
       ]

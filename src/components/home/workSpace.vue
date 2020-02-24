@@ -1,16 +1,23 @@
 <template>
-<div class="workSpace" v-click-outside="close">
+<div class="workSpace" v-click-outside="close" @click.prevent="request()">
   <div class="swipe-container" ref="swipeContainer" :class="{ isMoved: isMoved }" :style="`transform: translate3d(${translate}px, 0, 0)`">
-    <div class="layout-wrapper">
-      <labels-block></labels-block>
-      <transition name="fade">
-        <main-circle v-if="currentCircle === '' || currentCircle === 'stage'"></main-circle>
-        <acts-circle v-if="currentCircle === 'act'"></acts-circle>
-        <worlds-circle v-if="currentCircle ==='world'"></worlds-circle>
-      </transition>
-      <transition name="fade">
-        <stages-circle v-if="currentCircle === 'stage'"></stages-circle>
-      </transition>
+    <div
+      class="layout-wrapper"
+      id="work-space-scene"
+      data-calibrate-y="true"
+      data-calibrate-x="true"
+    >
+      <div class="layout-wrapper" data-depth="0.6" style="transition: none">
+        <labels-block></labels-block>
+        <transition name="fade">
+          <main-circle v-if="currentCircle === '' || currentCircle === 'stage'"></main-circle>
+          <acts-circle v-if="currentCircle === 'act'"></acts-circle>
+          <worlds-circle v-if="currentCircle ==='world'"></worlds-circle>
+        </transition>
+        <transition name="fade">
+          <stages-circle v-if="currentCircle === 'stage'"></stages-circle>
+        </transition>
+      </div>
     </div>
   </div>
 </div>
@@ -22,6 +29,7 @@ import stagesCircle from './circles/stagesCircle'
 import mainCircle from './circles/mainCircle'
 import actsCircle from './circles/actsCircle'
 import worldsCircle from './circles/worldsCircle'
+import Parallax from 'parallax-js'
 
 export default {
   name: 'workSpace',
@@ -44,6 +52,26 @@ export default {
   methods: {
     close () {
       this.$store.commit('status/SET_NO_CIRCLE')
+    },
+    request () {
+      DeviceMotionEvent.requestPermission()
+        .then(response => {
+          if (response === 'granted') {
+            this.initParalax()
+          }
+        })
+        .catch(() => {
+          this.initParalax()
+        })
+    },
+    initParalax () {
+      let scene = document.getElementById('work-space-scene')
+      let parallaxInstance = new Parallax(scene, {
+        relativeInput: true
+      })
+      parallaxInstance.friction(0.6, 0.6)
+      parallaxInstance.friction(0.6, 0.6)
+      parallaxInstance.enable()
     }
   },
   directives: {
@@ -51,7 +79,7 @@ export default {
       bind (el, { value }) {
         el._handler = e => {
           // если не открыт попап
-          if (!el.contains(e.target) && (document.getElementById('stages') || document.getElementById('worlds'))) {
+          if (!el.contains(e.target) && (document.getElementById('stages') || document.getElementById('acts') || document.getElementById('worlds'))) {
             e.preventDefault()
             e.stopPropagation()
             value(e)
@@ -90,6 +118,7 @@ export default {
       this.isMoved = false
       this.translate = 0
     }, false)
+    this.initParalax()
   }
 }
 </script>

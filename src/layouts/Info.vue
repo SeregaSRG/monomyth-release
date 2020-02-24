@@ -7,9 +7,9 @@
       <div class="card-page__title">INFO</div>
     </div>
     <cards-list
-        @cardChange="cardChange"
-        :cards="cards"
-        :index.sync="index"
+      @cardChange="cardChange"
+      :cards="cards"
+      :index.sync="index"
     ></cards-list>
     <div class="info__buttons">
       <div class="info__buttons-container">
@@ -60,58 +60,69 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  @import "../css/main";
   .info {
-    font-family: 'Calibri',sans-serif;
+    font-family: 'Calibri', sans-serif;
     width: 100%;
     height: 100%;
     background-color: #3a3a3a;
     display: flex;
     flex-direction: column;
+    @include supports-safe-area-insets {
+      padding-top: env(safe-area-inset-top);
+    }
 
     .info__header {
-      width:100%;
-      padding:0 30px;
-      margin-top:15px;
-      height:40px;
+      width: 100%;
+      padding: 0 30px;
+      margin-top: 15px;
+      margin-bottom: 5px;
+      height: 40px;
       display: flex;
 
-      .card-page__back-button{
+      .card-page__back-button {
         width: 40px;
-        height:40px;
+        height: 40px;
+
         img {
           width: 100%;
-          height:100%;
+          height: 100%;
         }
       }
 
-      .card-page__title{
+      .card-page__title {
         flex-grow: 1;
-        padding-right:40px;
+        padding-right: 40px;
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size:32px;
-        color:#f2f2f2;
+        font-size: 32px;
+        color: #f2f2f2;
       }
     }
-    .info__buttons{
-      width:100%;
+
+    .info__buttons {
+      width: 100%;
       display: flex;
       justify-content: center;
-      height: 39px;
+      height: 50px;
       flex-shrink: 0;
-      .info__buttons-container{
+
+      .info__buttons-container {
         width: 150px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        .info__button{
+
+        .info__button {
           transition: .3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
-          &.selected{
+
+          &.selected {
             transform: scale(1.5);
           }
-          img{
-            height:20px;
+
+          img {
+            height: 20px;
           }
         }
       }

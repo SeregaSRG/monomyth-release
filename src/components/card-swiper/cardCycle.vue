@@ -107,6 +107,7 @@ export default {
         .card__content--text-text {
           max-height: none !important;
           overflow: auto !important;
+          text-align: justify;
         }
         .card__content--text-title {
           margin-left: 0!important;
@@ -135,8 +136,9 @@ export default {
           max-width: 200px;
           margin: 0 auto;
           &-text {
-            max-height: 92px!important;
+            max-height: 90px!important;
             overflow: hidden!important;
+            text-align: justify;
           }
           &-title {
             margin-left: -18px!important;
@@ -212,7 +214,7 @@ export default {
           padding-top: 0;
           max-width: 200px;
           &-text {
-            max-height: 92px;
+            max-height: 90px;
             overflow: hidden;
           }
           &-title {
@@ -228,6 +230,7 @@ export default {
             font-family: 'MinionPro-It';
             font-size: 18px;
             line-height: 1;
+            text-align: justify;
           }
 
           .card__content--navigations {

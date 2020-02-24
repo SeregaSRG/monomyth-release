@@ -32,6 +32,7 @@ export default {
     .circle {
       box-shadow: none;
       position: absolute;
+      width: 248px;
       &--orange {
         background-color: #e6b184;
       }

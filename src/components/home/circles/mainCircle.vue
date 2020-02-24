@@ -17,12 +17,18 @@
     </div>
     <div class="circle__layout pointer-events" v-if="openStage !== 'stage'">
       <div class="world-name__wrapper pointer-events">
-        <p class="world-name pointer-events">ORDINARY WORLD</p>
+        <!--<p class="world-name pointer-events">ORDINARY WORLD</p>-->
+        <div class="world-name__wrapper world-name__wrapper pointer-events">
+          <img src="../../../assets/stages/labels/OWT.png" class="world-label-image">
+        </div>
       </div>
     </div>
     <div class="circle__layout pointer-events" v-if="openStage !== 'stage'">
       <div class="world-name__wrapper world-name__wrapper--bottom pointer-events">
-        <p class="world-name pointer-events">TRANSCENDENCE</p>
+        <!--<p class="world-name pointer-events">TRANSCENDENCE</p>-->
+        <div class="world-name__wrapper world-name__wrapper pointer-events">
+          <img src="../../../assets/stages/labels/TT.png" class="world-label-image">
+        </div>
       </div>
     </div>
     <div class="circle__layout cutted controls">
@@ -109,13 +115,22 @@ export default {
     height: 125px;
     display: flex;
     position: relative;
-
+    .world-label-image {
+      padding-top: 14px;
+      height: 14px;
+      margin: auto;
+      box-sizing: content-box;
+    }
     &--bottom {
       position: absolute;
       top: 125px;
 
       .world-name {
         padding-top: 0px;
+        padding-bottom: 15px;
+      }
+
+      .world-label-image {
         padding-bottom: 15px;
       }
     }

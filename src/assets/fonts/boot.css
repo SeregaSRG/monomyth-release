@@ -17,3 +17,8 @@
   font-family: MinionPro-Regular;
   src: url(MinionPro-Regular.ttf);
 }
+
+@font-face {
+  font-family: 'Arial Rounded MT Bold';
+  src: url(./8665.ttf);
+}

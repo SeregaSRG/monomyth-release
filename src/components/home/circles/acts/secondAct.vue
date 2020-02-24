@@ -52,6 +52,7 @@ export default {
       background-color: #E7C85A;
       position: absolute;
       top: -100%;
+      width: 248px;
     }
   }
   .text__wrapper {

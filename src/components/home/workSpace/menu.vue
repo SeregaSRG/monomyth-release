@@ -2,10 +2,10 @@
   <div class="menu"
        :class="{ covert: currentCircle === 'act' || currentCircle === 'world' || currentCircle === 'stage'}"
   >
-    <div class="menu__button">
+    <div class="menu__button" @click="removeAD">
       <img class="menu__image" src="../../../assets/home/noads.png">
     </div>
-    <router-link to="info" tag="div" class="menu__button">
+    <router-link to="info?param=cosmo" tag="div" class="menu__button">
       <img class="menu__image" src="../../../assets/home/_.png">
     </router-link>
   </div>
@@ -15,11 +15,15 @@
 export default {
   name: 'menu',
   methods: {
+    removeAD () {
+    }
   },
   computed: {
     currentCircle () {
       return this.$store.getters['status/currentCircle']
     }
+  },
+  mounted () {
   }
 }
 </script>

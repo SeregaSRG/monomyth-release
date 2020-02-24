@@ -34,6 +34,7 @@ export default {
       box-shadow: none;
       position: absolute;
       top: -100%;
+      width: 248px;
       &--blue {
         background-color: #81a3ac;
       }

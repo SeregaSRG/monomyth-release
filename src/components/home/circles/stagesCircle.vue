@@ -21,7 +21,7 @@
         </div>
     </div>
     </transition>
-    <div class="circle__layout cutted"
+    <div class="circle__layout cutted pointer-events-auto"
       @click="openText"
     >
       <transition name="fade-no-abs" appear :duration="100" mode="out-in">

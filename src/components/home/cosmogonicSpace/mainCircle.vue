@@ -9,26 +9,36 @@
           <img src="../../../assets/home/arrow-white.png" alt="" class="arrow__image">
         </div>
       </div>
+      <div class="dots dots-top"></div>
+      <div class="dots dots-bottom"></div>
     </div>
     <transition name="onfade">
-      <div class="circle__layout paralax__container pointer-events" id="scene" data-calibrate-y="true"
-           data-calibrate-x="true" v-show="currentCircle === 'cycleStage'">
+      <div class="circle__layout paralax__container pointer-events"
+           id="scene"
+           data-calibrate-y="true"
+           data-calibrate-x="true"
+           v-show="currentCircle === 'cycleStage'"
+      >
         <div class="paralax" data-depth="0.6">
           <div class="paralax__bg"
                id="paralax__bg"
                v-if=" currentCycleStage === 1 ||  currentCycleStage === 2 ||  currentCycleStage === 3 ||  currentCycleStage === 4"
                :class="{
                'paralax__bg-a': currentCycleStage === 1,
-               'paralax__bg-b': currentCycleStage === 3,
-               'paralax__bg-c': currentCycleStage === 2,
+               'paralax__bg-b': currentCycleStage === 2,
+               'paralax__bg-c': currentCycleStage === 3,
                'paralax__bg-d': currentCycleStage === 4,
             }"
           ></div>
         </div>
       </div>
     </transition>
-    <div class="circle__layout pointer-events" id="scene2" data-calibrate-y="true" data-calibrate-x="true"
-         v-show="currentCircle !== 'cycleStage'">
+    <div class="circle__layout pointer-events-auto"
+         id="scene2"
+         data-calibrate-y="true"
+         data-calibrate-x="true"
+         v-show="currentCircle !== 'cycleStage'"
+    >
       <h2 class="title" data-depth="0.7">D R E A M</h2>
     </div>
   </div>
@@ -93,7 +103,7 @@ export default {
       transition: 0s;
 
       .paralax__bg {
-        transition: 0s;
+        transition: none;
         position: absolute;
         width: 440px;
         height: 440px;
@@ -117,6 +127,21 @@ export default {
           background-image: url("../../../assets/home/cosmo-stages/EmanateBg.png");
         }
       }
+    }
+  }
+  .dots {
+    position: absolute;
+    left: 121px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 1px solid #d6d6d6;
+    background-color: #0a0a0a;
+    &-top {
+      top: -4px;
+    }
+    &-bottom {
+      bottom: -4px;
     }
   }
 
@@ -147,6 +172,7 @@ export default {
   .title {
     width: 160px;
     font-size: 36px;
+    transition: none;
   }
 
   .black-circle {

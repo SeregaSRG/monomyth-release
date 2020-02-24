@@ -83,8 +83,13 @@ export default {
       this.$store.commit('status/SET_TRANSITIONS_TEXTS', false)
     }
   },
-  computed: {},
+  computed: {
+    currentCycleStage () {
+      return this.$store.getters['status/currentCycleStage']
+    }
+  },
   created () {
+    this.currentPage = this.currentCycleStage - 1
     if (!this.$route.query.hasOwnProperty('page')) {
       return
     }

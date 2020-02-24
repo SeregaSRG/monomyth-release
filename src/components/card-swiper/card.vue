@@ -19,6 +19,7 @@
         </div>
       </div>
       <div class="card__content">
+        <div class="more-dots" v-if="!isCardOpened">...</div>
         <div class="card__content--quote">
           {{ card.shortDescription }}
         </div>
@@ -27,7 +28,7 @@
                v-if="isCardOpened"
           >
             <div class="card__content--text-title">Campbell</div>
-            <div class="card__content--text-text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ card.quotation }}</div>
+            <pre class="card__content--text-text" v-html="'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + card.quotation"></pre>
             <div class="card__content--navigations">
               <div class="card__content--navigations-image"
                    @click.stop="closeCard"
@@ -89,9 +90,10 @@ export default {
           this.translate = event.changedTouches[0].screenY - this.startPoint
         }
         if (event.changedTouches[0].screenY - this.startPoint > 80) {
-          this.closeCard()
+          this.closeCard(event.changedTouches[0].screenY - this.startPoint > 80, event.changedTouches[0].screenY, this.startPoint, event.changedTouches[0].screenY - this.startPoint)
         }
-        // TODO в логиге есть отенциальный баг
+        console.log()
+        // TODO в логиге есть потенциальный баг
       }
     }, false)
     swipeContainer.addEventListener('touchend', (event) => {
@@ -127,6 +129,7 @@ export default {
         color:#f2f2f2;
         background-color: #0a0a0a;
         font-family: 'Lobster',sans-serif;
+        border-radius: 15px 15px 0 0;
         padding: 16px 0 30px 0;
         display: flex;
         justify-content: space-between;
@@ -168,6 +171,7 @@ export default {
           line-height: 1;
           text-align: justify;
           overflow: hidden;
+          position: relative;
         }
 
         .card__content--text {
@@ -186,6 +190,7 @@ export default {
             font-family: 'MinionPro-It';
             font-size: 18px;
             line-height: 1;
+            text-align: justify;
           }
 
           .card__content--navigations {

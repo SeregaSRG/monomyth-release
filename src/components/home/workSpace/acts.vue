@@ -61,9 +61,70 @@ export default {
       position: relative;
       border-radius: 50%;
       overflow: hidden;
+      // animation-name: bounce;
+      animation: bounce 5s linear infinite;
+
+      @keyframes bounce1 {
+        from {
+          transform: scale(1, 1) translate3d(0,0,0);
+        }
+        to {
+          transform: scale(1, 1) translate3d(0,0,0);
+        }
+        5% {
+          transform: scale(1.2, 1.2) translate3d(0,0,0);
+        }
+        10% {
+          transform: scale(1, 1) translate3d(0,0,0);
+        }
+      }
+      @keyframes bounce2 {
+        from {
+          transform: scale(1, 1) translate3d(0,0,0);
+        }
+        to {
+          transform: scale(1, 1) translate3d(0,0,0);
+        }
+        15% {
+          transform: scale(1, 1) translate3d(0,0,0);
+        }
+        20% {
+          transform: scale(1.2, 1.2) translate3d(0,0,0);
+        }
+        25% {
+          transform: scale(1, 1) translate3d(0,0,0);
+        }
+      }
+      @keyframes bounce3 {
+        from {
+          transform: scale(1, 1) translate3d(0,0,0);
+        }
+        to {
+          transform: scale(1, 1) translate3d(0,0,0);
+        }
+        30% {
+          transform: scale(1, 1) translate3d(0,0,0);
+        }
+        35% {
+          transform: scale(1.2, 1.2) translate3d(0,0,0);
+        }
+        40% {
+          transform: scale(1, 1) translate3d(0,0,0);
+        }
+      }
 
       &:nth-child(even) {
         margin-top: 84px - 52px;
+      }
+
+      &:nth-child(1) {
+        animation: bounce1 5s ease-in-out infinite;
+      }
+      &:nth-child(2) {
+        animation: bounce2 5s ease-in-out infinite;
+      }
+      &:nth-child(3) {
+        animation: bounce3 5s ease-in-out infinite;
       }
     }
 

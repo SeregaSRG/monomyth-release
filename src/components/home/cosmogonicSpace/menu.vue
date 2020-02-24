@@ -3,7 +3,7 @@
        :class="{ covert: currentCircle === 'act' || currentCircle === 'world' || currentCircle === 'stage'}"
   >
     <div class="menu__button">
-      <img class="menu__image" src="../../../assets/home/Back.png" @click="back()">
+      <img class="menu__image" src="../../../assets/home/back-cosmo.png" @click="back()">
     </div>
     <router-link to="/info" tag="div" class="menu__button">
       <img class="menu__image" src="../../../assets/home/_.png">

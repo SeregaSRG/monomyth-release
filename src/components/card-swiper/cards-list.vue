@@ -12,7 +12,7 @@
   <div class="card-layer__wrapper pointer-events">
     <div class="card-layer"
          :class="{ 'card-layer--opened': isCardOpened}"
-         v-touch-swipe.horizontal="swipeHandler"
+         ref="swipeContainer"
     >
       <div class="card-list pointer-events">
         <template v-if="type !== 'cycle'">
@@ -25,6 +25,7 @@
             @closeCard="closeCard"
             :style="translateX"
             class="animate"
+            :class="{ 'isMoved': isMoved }"
           ></card>
         </template>
         <template v-else>
@@ -37,6 +38,7 @@
             @closeCard="closeCard"
             :style="translateX"
             class="animate"
+            :class="{ 'isMoved': isMoved }"
           ></card-cycle>
         </template>
       </div>
@@ -68,7 +70,11 @@ export default {
   data () {
     return {
       currentCard: null,
-      isCardOpened: false
+      isCardOpened: false,
+      touchstartX: null,
+      touchstartY: null,
+      translate: 0,
+      isMoved: false
     }
   },
   methods: {
@@ -102,20 +108,74 @@ export default {
       } else if (e.direction === 'left') {
         this.nextCard()
       }
+    },
+    getWidth () {
+      return Math.max(
+        document.body.scrollWidth,
+        document.documentElement.scrollWidth,
+        document.body.offsetWidth,
+        document.documentElement.offsetWidth,
+        document.documentElement.clientWidth
+      )
     }
   },
   computed: {
     translateX () {
-      return `transform: translateX(-${this.currentPage * 100}vw);`
+      return `transform: translateX(${this.translate}px);`
     }
   },
   mounted () {
+    const trans = 35
+    let swipeContainer = this.$refs['swipeContainer']
+    swipeContainer.addEventListener('touchstart', (event) => {
+      if (this.isCardOpened) {
+        return
+      }
+      this.touchstartX = event.changedTouches[0].screenX
+      this.touchstartY = event.changedTouches[0].screenY
+    }, false)
+    swipeContainer.addEventListener('touchmove', (event) => {
+      if (this.isCardOpened) {
+        return
+      }
+      if (event.changedTouches[0].screenX < this.touchstartX - trans || event.changedTouches[0].screenX > this.touchstartX + trans) {
+        this.$nextTick(() => {
+          this.isMoved = true
+        })
+      }
+      if (event.changedTouches[0].screenX < this.touchstartX) {
+        this.translate = -(this.currentPage * this.getWidth()) - (this.touchstartX - event.changedTouches[0].screenX - 20)
+      }
+      if (event.changedTouches[0].screenX > this.touchstartX) {
+        this.translate = -(this.currentPage * this.getWidth()) + event.changedTouches[0].screenX - this.touchstartX + 20
+      }
+    }, false)
+    swipeContainer.addEventListener('touchend', (event) => {
+      if (this.isCardOpened) {
+        return
+      }
+      let dela = Math.abs(-this.currentPage * this.getWidth() - this.translate)
+      if (-this.currentPage * this.getWidth() - this.translate < 0 && dela >= this.getWidth() / 3) {
+        this.prevCard()
+      }
+      if (-this.currentPage * this.getWidth() - this.translate > 0 && dela >= this.getWidth() / 3) {
+        this.nextCard()
+      }
+      this.isMoved = false
+      this.$nextTick(() => {
+        this.translate = -this.currentPage * this.getWidth()
+      })
+    }, false)
+  },
+  created () {
+    this.translate = this.getWidth() * -this.currentPage
   }
 }
 </script>
 
 <style lang="scss">
   @import "texts-animations";
+  @import "../../css/main";
   .cards-swiper {
     height: 100%;
     display: flex;
@@ -124,6 +184,10 @@ export default {
 
   .animate {
     transition: transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+
+  .isMoved {
+    transition: none!important;
   }
 
   .card-layer__wrapper {
@@ -139,6 +203,9 @@ export default {
     height: 100%;
     position: absolute;
     transform: translate3d(0, 60px, 0);
+    @include supports-safe-area-insets {
+      transform: translate3d(0, calc(60px + env(safe-area-inset-top)), 0);
+    }
     overflow: hidden;
     > * {
       transition: .3s;

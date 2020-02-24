@@ -12,7 +12,9 @@
         <home-acts style="z-index: 1"></home-acts>
       </div>
     </div>
-    <div class="cosmogonic" v-if="currentCycle === 2" key="2">
+    <div class="cosmogonic"
+         :class="{ 'isDream': isDream, 'isNotDream': isNotDream }"
+         v-if="currentCycle === 2" key="2">
       <!-- <h1 class="title title--high" @click="$store.commit('status/SET_NO_CIRCLE')">COSMOGONIC CYCLE</h1> -->
       <div class="title title--high"><img src="../assets/COSMOGONICCYCLE.png"></div>
       <div class="cosmogonic__content" style="transform: scale(1);">
@@ -22,6 +24,7 @@
       </div>
     </div>
   </transition>
+  <sleep-animation v-if="isDream"></sleep-animation>
   <transition name="fade">
     <cycles v-if="isTransitionsTexts"></cycles>
   </transition>
@@ -38,9 +41,11 @@ import homeActs from '../components/home/workSpace/acts'
 import bell from '../components/home/cosmogonicSpace/bell'
 import ad from '../components/global/ad'
 import cycles from './Cycles'
+import SleepAnimation from '../components/home/cosmogonicSpace/sleepAnimation'
 
 export default {
   components: {
+    SleepAnimation,
     cycles,
     cosmogonicMenu,
     cosmogonicSpace,
@@ -51,12 +56,32 @@ export default {
     ad
   },
   name: 'Home',
+  data () {
+    return {
+      isNotDream: false
+    }
+  },
   computed: {
     currentCycle () {
       return this.$store.getters['status/currentCycle']
     },
     isTransitionsTexts () {
       return this.$store.getters['status/isTransitionsTexts']
+    },
+    isDream () {
+      return this.$store.getters['status/isDream']
+    }
+  },
+  mounted () {
+  },
+  watch: {
+    isDream (n) {
+      if (!n) {
+        this.isNotDream = true
+      }
+      if (n) {
+        this.isNotDream = false
+      }
     }
   }
 }
@@ -66,10 +91,13 @@ export default {
   @import "../css/main";
   .Home {
     padding-top: 36px;
+    @include supports-safe-area-insets {
+      padding-top: calc(36px + env(safe-area-inset-top));
+    }
     padding-bottom: 57px; // for ad banner
     position: relative;
-    width: 100%;
-    min-height: 100%;
+    width: 100vw;
+    min-height: 100vh;
     height: auto;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -143,6 +171,28 @@ export default {
     z-index: 100;
     .title--high, .menu, .bell, .labels {
       opacity: 0!important;
+    }
+  }
+  .isDream {
+    animation: isDream .7s ease-out;
+    @keyframes isDream {
+      from {
+        transform: scale(1);
+      }
+      to {
+        transform: scale(6);
+      }
+    }
+  }
+  .isNotDream {
+    animation: isNotDream .7s ease-out;
+    @keyframes isNotDream {
+      from {
+        transform: scale(6);
+      }
+      to {
+        transform: scale(1);
+      }
     }
   }
 </style>

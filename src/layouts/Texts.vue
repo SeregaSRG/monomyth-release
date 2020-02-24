@@ -25,7 +25,7 @@
       <div class="ad"></div>
     </div>
     <cards-list
-      :list="currentStageObject.cards"
+      :list="reversedCards"
       :currentPage.sync="currentPage"
     ></cards-list>
   </div>
@@ -47,6 +47,26 @@ export default {
         'stages': [
           {
             'id': 1,
+            'name': 'Call',
+            'cards': [
+              {
+                'id': 16,
+                'title': 'Refusal of the Call',
+                'shortDescription': 'Often when the call is given, the future hero first refuses to heed it. This may be from a sense of duty or obligation, fear, insecurity, a sense of inadequacy, or any of a range of reasons that work to hold the person in his or her current circumstances.',
+                'quotation': '..."Refusal of the summons converts the adventure into its negative. Walled in boredom, hard work, or \'culture\', the subject loses the power of significant affirmative action and becomes a victim to be saved. His flowering world becomes a wasteland of dry stones and his life feels meaningless — even though, like King Minos, he may through titanic effort succeed in building an empire or renown. Whatever house he builds, it will be a house of death: a labyrinth of cyclopean walls to hide from him his minotaur. All he can do is create new problems for himself and await the gradual approach of his disintegration."',
+                'image': require('../assets/stages-icons/16.png')
+              },
+              {
+                'id': 17,
+                'title': 'The Call to Adventure',
+                'shortDescription': 'The hero begins in a mundane situation of normality from which some information is received that acts as a call to head off into the unknown.',
+                'quotation': '"...a forest, a kingdom underground, beneath the waves, or above the sky, a secret island, lofty mountaintop, or profound dream state; but it is always a place of strangely fluid and polymorphous beings, unimaginable torments, super human deeds, and impossible delight. The hero can go forth of his own volition to accomplish the adventure, as did Theseus when he arrived in his father\'s city, Athens, and heard the horrible history of the Minotaur; or he may be carried or sent abroad by some benign or malignant agent as was Odysseus, driven about the Mediterranean by the winds of the angered god, Poseidon. The adventure may begin as a mere blunder... or still again, one may be only casually strolling when some passing phenomenon catches the wandering eye and lures one away from the frequented paths of man. Examples might be multiplied, ad infinitum, from every corner of the world."',
+                'image': require('../assets/stages-icons/17.png')
+              }
+            ]
+          },
+          {
+            'id': 2,
             'name': 'Elixir',
             'cards': [
               {
@@ -66,7 +86,7 @@ export default {
             ]
           },
           {
-            'id': 2,
+            'id': 3,
             'name': 'Return threshold',
             'cards': [
               {
@@ -86,7 +106,7 @@ export default {
             ]
           },
           {
-            'id': 3,
+            'id': 4,
             'name': 'Road back',
             'cards': [
               {
@@ -106,7 +126,7 @@ export default {
             ]
           },
           {
-            'id': 4,
+            'id': 5,
             'name': 'Nadir',
             'cards': [
               {
@@ -147,7 +167,7 @@ export default {
             ]
           },
           {
-            'id': 5,
+            'id': 6,
             'name': 'Trails',
             'cards': [
               {
@@ -160,7 +180,7 @@ export default {
             ]
           },
           {
-            'id': 6,
+            'id': 7,
             'name': 'Threshold',
             'cards': [
               {
@@ -180,7 +200,7 @@ export default {
             ]
           },
           {
-            'id': 7,
+            'id': 8,
             'name': 'Aid',
             'cards': [
               {
@@ -189,26 +209,6 @@ export default {
                 'shortDescription': 'Once the hero has committed to the quest, consciously or unconsciously, his guide and magical helper appears or becomes known. More often than not, this supernatural mentor will present the hero with one or more talismans or artifacts that will aid him later in his quest.',
                 'quotation': '..."For those who have not refused the call, the first encounter of the hero journey is with a protective figure (often a little old crone or old man) who provides the adventurer with amulets against the dragon forces he is about to pass. What such a figure represents is the benign, protecting power of destiny. The fantasy is a reassurance — promise that the peace of Paradise, which was known first within the mother womb, is not to be lost; that it supports the present and stands in the future as well as in the past (is omega as well as alpha); that though omnipotence may seem to be endangered by the threshold passages and life awakenings, protective power is always and ever present within or just behind the unfamiliar features of the world. One has only to know and trust, and the ageless guardians will appear. Having responded to his own call, and continuing to follow courageously as the consequences unfold, the hero finds all the forces of the unconscious at his side. Mother Nature herself supports the mighty task. And in so far as the hero\'s act coincides with that for which his society is ready, he seems to ride on the great rhythm of the historical process."',
                 'image': require('../assets/stages-icons/15.png')
-              }
-            ]
-          },
-          {
-            'id': 8,
-            'name': 'Call',
-            'cards': [
-              {
-                'id': 16,
-                'title': 'Refusal of the Call',
-                'shortDescription': 'Often when the call is given, the future hero first refuses to heed it. This may be from a sense of duty or obligation, fear, insecurity, a sense of inadequacy, or any of a range of reasons that work to hold the person in his or her current circumstances.',
-                'quotation': '..."Refusal of the summons converts the adventure into its negative. Walled in boredom, hard work, or \'culture\', the subject loses the power of significant affirmative action and becomes a victim to be saved. His flowering world becomes a wasteland of dry stones and his life feels meaningless — even though, like King Minos, he may through titanic effort succeed in building an empire or renown. Whatever house he builds, it will be a house of death: a labyrinth of cyclopean walls to hide from him his minotaur. All he can do is create new problems for himself and await the gradual approach of his disintegration."',
-                'image': require('../assets/stages-icons/16.png')
-              },
-              {
-                'id': 17,
-                'title': 'The Call to Adventure',
-                'shortDescription': 'The hero begins in a mundane situation of normality from which some information is received that acts as a call to head off into the unknown.',
-                'quotation': '"...a forest, a kingdom underground, beneath the waves, or above the sky, a secret island, lofty mountaintop, or profound dream state; but it is always a place of strangely fluid and polymorphous beings, unimaginable torments, super human deeds, and impossible delight. The hero can go forth of his own volition to accomplish the adventure, as did Theseus when he arrived in his father\'s city, Athens, and heard the horrible history of the Minotaur; or he may be carried or sent abroad by some benign or malignant agent as was Odysseus, driven about the Mediterranean by the winds of the angered god, Poseidon. The adventure may begin as a mere blunder... or still again, one may be only casually strolling when some passing phenomenon catches the wandering eye and lures one away from the frequented paths of man. Examples might be multiplied, ad infinitum, from every corner of the world."',
-                'image': require('../assets/stages-icons/17.png')
               }
             ]
           }
@@ -227,6 +227,10 @@ export default {
     },
     currentStageObject () {
       return this.stagesList.stages.find((e) => e.id === (this.currentStage.id + 1))
+    },
+    reversedCards () {
+      let cards = this.currentStageObject.cards
+      return cards.reverse()
     }
   }
 }
@@ -234,7 +238,7 @@ export default {
 
 <style lang="scss" scoped>
   @import "../components/card-swiper/texts-animations";
-
+  @import "../css/main";
   .texts {
     height: 100vh;
     width: 100vw;
@@ -242,6 +246,9 @@ export default {
     display: flex;
     flex-direction: column;
     background-color: #c1c1c1;
+    @include supports-safe-area-insets {
+      padding-top: env(safe-area-inset-top);
+    }
 
     &__header {
       height: 60px;

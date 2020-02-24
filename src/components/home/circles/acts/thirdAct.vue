@@ -44,7 +44,7 @@ export default {
     overflow: hidden;
     filter: drop-shadow(0 0 13px rgba(0, 0, 0, 0.35));
     position: relative;
-    margin-left: 125px;
+    margin-left: 124px;
     border-radius: 0 100% 0 0;
     border: 1px solid #ab9853;
     .circle {
@@ -52,6 +52,7 @@ export default {
       background-color: #E7C85A;
       position: absolute;
       left: -100%;
+      width: 248px;
     }
   }
   .text__wrapper {

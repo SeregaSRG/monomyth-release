@@ -1,5 +1,5 @@
 <template>
-  <div class="cosmogonicSpace" v-click-outside="close">
+  <div class="cosmogonicSpace" v-click-outside="close" id="cosmogonicSpace">
     <div class="swipe-container" ref="swipeContainer" :class="{ isMoved: isMoved }" :style="`transform: translate3d(${translate}px, 0, 0)`">
       <div class="layout-wrapper">
         <labels-block></labels-block>
@@ -25,7 +25,8 @@ export default {
       touchstartX: null,
       touchstartY: null,
       translate: 0,
-      isMoved: false
+      isMoved: false,
+      timer: null
     }
   },
   methods: {
@@ -58,6 +59,16 @@ export default {
     }
   },
   mounted () {
+    let el = document.getElementById('cosmogonicSpace')
+    el.addEventListener('touchstart', (e) => {
+      this.timer = setTimeout(() => {
+        this.$store.commit('status/SET_DREAM', true)
+      }, 1700)
+    })
+    document.addEventListener('touchend', (e) => {
+      this.$store.commit('status/SET_DREAM', false)
+      clearInterval(this.timer)
+    })
     /*
     let swipeContainer = this.$refs['swipeContainer']
     swipeContainer.addEventListener('touchstart', (event) => {
@@ -79,6 +90,9 @@ export default {
       this.translate = 0
     }, false)
     */
+  },
+  beforeDestroy () {
+    clearInterval(this.timer)
   }
 }
 </script>
@@ -91,7 +105,7 @@ export default {
     width: 100%;
     display: flex;
     position: relative;
-    // overflow: hidden;
+    overflow: hidden;
     .swipe-container {
       height: 340px;
       width: 100%;

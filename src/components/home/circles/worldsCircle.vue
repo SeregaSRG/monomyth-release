@@ -70,6 +70,11 @@ export default {
     display: flex;
     position: relative;
 
+    .world-label-image {
+      height: 16px;
+      margin: auto;
+    }
+
     &--bottom {
       position: absolute;
       top: 125px;

@@ -52,7 +52,7 @@ export default {
             'id': 1,
             'title': 'Acts',
             'shortDescription': 'The stages of the Journey may be divided into three acts: Departure, Initiation, and Return. "Departure" deals with the hero\'s adventure prior to the... quest; "Initiation" deals with the hero\'s many adventures along the way; and "Return" deals with the hero\'s return home with knowledge and powers acquired on the journey.',
-            'quotation': '...“The mythological hero, setting forth from his common-day hut or castle, is lured, carried away, or else voluntarily proceeds, to the threshold of adventure. There he encounters a shadow presence that guards the passage. The hero may defeat or conciliate this power and go alive into the kingdom of the dark, or be slain by the opponent and descend in death.”\n\n\n...“Beyond the threshold, then, the hero journeys through a world of unfamiliar yet strangely intimate forces, some of which severely threaten him, some of which give magical aid. When he arrives at the nadir of the mythological round, he undergoes a supreme ordeal and gains his reward. The triumph may be represented as the hero\'s sexual union with the goddess-mother of the world, his recognition by the father-creator, his own divinization, or again — if the powers have remained unfriendly to him — his theft of the boon he came to gain; intrinsically it is an expansion of consciousness and therewith of being.”\n\n\n\n...“The final work is that of the return. If the powers have blessed the hero, he now sets forth under their protection; if not, he flees and is pursued. At the return threshold the transcendental powers must remain behind; the hero re-emerges from the kingdom of dread. The boon that he brings restores the world.”',
+            'quotation': '...“The mythological hero, setting forth from his common-day hut or castle, is lured, carried away, or else voluntarily proceeds, to the threshold of adventure. There he encounters a shadow presence that guards the passage. The hero may defeat or conciliate this power and go alive into the kingdom of the dark, or be slain by the opponent and descend in death.”<div class="global-star"></div>...“Beyond the threshold, then, the hero journeys through a world of unfamiliar yet strangely intimate forces, some of which severely threaten him, some of which give magical aid. When he arrives at the nadir of the mythological round, he undergoes a supreme ordeal and gains his reward. The triumph may be represented as the hero\'s sexual union with the goddess-mother of the world, his recognition by the father-creator, his own divinization, or again — if the powers have remained unfriendly to him — his theft of the boon he came to gain; intrinsically it is an expansion of consciousness and therewith of being.”<div class="global-star"></div>...“The final work is that of the return. If the powers have blessed the hero, he now sets forth under their protection; if not, he flees and is pursued. At the return threshold the transcendental powers must remain behind; the hero re-emerges from the kingdom of dread. The boon that he brings restores the world.”',
             'image': require('../assets/transitions-icons/1.png')
           },
           {
@@ -64,7 +64,6 @@ export default {
           }
         ]
       }
-
     }
   },
   methods: {

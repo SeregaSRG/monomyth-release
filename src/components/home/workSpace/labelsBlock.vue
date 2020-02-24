@@ -1,18 +1,54 @@
 <template>
   <transition name="light-bounce">
-    <div class="labels" :key="whenAnimateLabels" @click="$store.commit('status/SET_NO_CIRCLE')">
-        <div class="label"
-             @click.stop="setStage(stage)"
-             v-for="(stage, $index) in stages"
-             :key="stage.id">
-          <p class="label__text"
-             :class="{
+    <div class="labels pointer-events-auto" :key="whenAnimateLabels" @click="$store.commit('status/SET_NO_CIRCLE')">
+      <div class="label"
+           @click.stop="setStage(stage)"
+           v-for="(stage, $index) in stages"
+           :key="stage.id"
+      >
+        <!--<p class="label__text"
+           :class="{
                covert: stage.name !== currentStage.name && currentCircle === 'stage',
                'label__text--big': stage.name === currentStage.name && currentCircle === 'stage'
              }"
-             v-if="isDisplay($index, stage)" v-html="stage.name"></p>
-          <!--<img :src="stages.imgText">-->
-        </div>
+           v-if="isDisplay($index, stage)" v-html="stage.name"
+        ></p>-->
+        <!-- Приходится делать эти ересь, потому что адектным способом не инъектирует картинку реактивно -->
+        <img :class="{
+               covert: stage.name !== currentStage.name && currentCircle === 'stage',
+               'label__text--big': stage.name === currentStage.name && currentCircle === 'stage'
+             }" src="../../../assets/stages/labels/CALL.png" v-if="isDisplay($index, stage) && stage.id === 0">
+        <img :class="{
+               covert: stage.name !== currentStage.name && currentCircle === 'stage',
+               'label__text--big': stage.name === currentStage.name && currentCircle === 'stage'
+             }" src="../../../assets/stages/labels/ELIXIR.png" v-if="isDisplay($index, stage) && stage.id === 1">
+        <img :class="{
+               covert: stage.name !== currentStage.name && currentCircle === 'stage',
+               'label__text--big': stage.name === currentStage.name && currentCircle === 'stage'
+             }" src="../../../assets/stages/labels/RETURN THRESHOLD.png" v-if="isDisplay($index, stage) && stage.id === 2"
+             style="height: 38px"
+        >
+        <img :class="{
+               covert: stage.name !== currentStage.name && currentCircle === 'stage',
+               'label__text--big': stage.name === currentStage.name && currentCircle === 'stage'
+             }" src="../../../assets/stages/labels/ROAD BACK.png" v-if="isDisplay($index, stage) && stage.id === 3">
+        <img :class="{
+               covert: stage.name !== currentStage.name && currentCircle === 'stage',
+               'label__text--big': stage.name === currentStage.name && currentCircle === 'stage'
+             }" src="../../../assets/stages/labels/NADIR.png" v-if="isDisplay($index, stage) && stage.id === 4">
+        <img :class="{
+               covert: stage.name !== currentStage.name && currentCircle === 'stage',
+               'label__text--big': stage.name === currentStage.name && currentCircle === 'stage'
+             }" src="../../../assets/stages/labels/TRIALS.png" v-if="isDisplay($index, stage) && stage.id === 5">
+        <img :class="{
+               covert: stage.name !== currentStage.name && currentCircle === 'stage',
+               'label__text--big': stage.name === currentStage.name && currentCircle === 'stage'
+             }" src="../../../assets/stages/labels/THRESHOLD.png" v-if="isDisplay($index, stage) && stage.id === 6">
+        <img :class="{
+               covert: stage.name !== currentStage.name && currentCircle === 'stage',
+               'label__text--big': stage.name === currentStage.name && currentCircle === 'stage'
+             }" src="../../../assets/stages/labels/AID.png" v-if="isDisplay($index, stage) && stage.id === 7">
+      </div>
     </div>
   </transition>
 </template>
@@ -133,36 +169,45 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../../css/onCircle";
-.labels {
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  top: calc(50% - 150px);
-  left: calc(50% - 150px);
-  @include onCircle(0, 8, 300, 20, 360, 0, 0);
-  .label {
+  @import "../../../css/onCircle";
+
+  .labels {
     position: absolute;
-    width: 20px;
-    height: 20px;
-    display: flex;
-    align-items: center;
-    .label__text {
-      margin: auto;
-      font-size: 16px;
-      font-weight: bold;
-      font-family: 'Calibri', sans-serif;
-      &--big {
-        font-size: 20px;
+    width: 300px;
+    height: 300px;
+    top: calc(50% - 150px);
+    left: calc(50% - 150px);
+    @include onCircle(0, 8, 300, 20, 360, 0, 0);
+
+    .label {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+
+      .label__text {
+        margin: auto;
+        font-size: 16px;
+        font-weight: bold;
+        font-family: 'Calibri', sans-serif;
+
+        &--big {
+          font-size: 20px;
+        }
+      }
+
+      img {
+        height: 16px;
       }
     }
   }
-}
-.cycle-leave-to  {
-  .labels {
-    transition: 1s;
-    transform: scale(3.5);
-    opacity: 0;
+
+  .cycle-leave-to {
+    .labels {
+      transition: 1s;
+      transform: scale(3.5);
+      opacity: 0;
+    }
   }
-}
 </style>
