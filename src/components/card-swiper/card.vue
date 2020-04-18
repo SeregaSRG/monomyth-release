@@ -9,7 +9,9 @@
       <div class="card__title"
            :class="{ 'card__title--cycle': type === 'cycle' }"
       >
-        <p class="card__title-text">
+        <p class="card__title-text"
+          :class="{'card__title-text--acts': card.title === 'Acts', 'card__title-text--words': card.title === 'Worlds'}"
+        >
           {{ card.title }}
         </p>
         <div class="card__title-icon"
@@ -33,8 +35,8 @@
               <div class="card__content--navigations-image"
                    @click.stop="closeCard"
               ><img src="../../assets/X.png"></div>
-              <div class="card__content--navigations-text"><img src="../../assets/Sharetext.png"></div>
-              <div class="card__content--navigations-image"><img src="../../assets/Share.png"></div>
+              <div class="card__content--navigations-text" @click="shareText"><img src="../../assets/Sharetext.png"></div>
+              <div class="card__content--navigations-image" @click="shareText"><img src="../../assets/Share.png"></div>
             </div>
           </div>
         </transition>
@@ -63,11 +65,16 @@ export default {
     }
   },
   methods: {
+    shareText () {
+      this.sound('Buttons')
+    },
     openCard (e) {
+      this.sound('OpenCard')
       this.isCardOpened = true
       this.$emit('openCard', true)
     },
     closeCard (e) {
+      this.sound('OpenCard')
       this.isCardOpened = false
       this.$emit('closeCard', true)
       this.startPoint = null
@@ -106,15 +113,16 @@ export default {
 
 <style lang="scss" scoped>
   @import "../../css/animations";
+  @import "../../css/main";
   .card-slide {
     flex-shrink: 0;
     width: 100%;
     height: 425px;
     display: flex;
-    padding-top: 2vw;
+    padding-top: 10px;
     .card {
       margin: auto;
-      width: 270px;
+      width: 310px;
       // height: 425px;
       max-height: 425px;
       border-radius: 15px;
@@ -142,9 +150,15 @@ export default {
           margin: 0;
           line-height: 1.2;
           max-width: 270px;
+          &--acts {
+            color: #f5d5bb;
+          }
+          &--words {
+            color: #e0f9ff;
+          }
         }
         .card__title-icon {
-          height: 120px;
+          height: 150px;
           display: flex;
           img {
             height: 100%;
@@ -178,7 +192,7 @@ export default {
           font-family: 'MinionPro-It';
           margin: 0 auto;
           width: 270px;
-          padding-top: 20px;
+          padding-top: 10px;
           padding-bottom: 20px;
 
           &-title {
@@ -209,6 +223,7 @@ export default {
                 width: 100%;
                 margin: auto;
               }
+              @include clickBounce();
             }
             &-text {
               margin: 0 10px 0 6px;
@@ -218,6 +233,7 @@ export default {
                 width: 100%;
                 margin: auto;
               }
+              @include clickBounce();
             }
           }
         }

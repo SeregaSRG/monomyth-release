@@ -9,8 +9,6 @@
           <img src="../../../assets/home/arrow-white.png" alt="" class="arrow__image">
         </div>
       </div>
-      <div class="dots dots-top"></div>
-      <div class="dots dots-bottom"></div>
     </div>
     <transition name="onfade">
       <div class="circle__layout paralax__container pointer-events"
@@ -33,6 +31,10 @@
         </div>
       </div>
     </transition>
+    <div class="circle__layout pointer-events dots__wrapper">
+      <div class="dots dots-top"></div>
+      <div class="dots dots-bottom"></div>
+    </div>
     <div class="circle__layout pointer-events-auto"
          id="scene2"
          data-calibrate-y="true"
@@ -128,6 +130,11 @@ export default {
         }
       }
     }
+  }
+  .dots__wrapper {
+    background-image:  url("../../../assets/COSMOshadow.png");
+    background-size: contain;
+    background-position: center center;
   }
   .dots {
     position: absolute;

@@ -7,6 +7,7 @@ let onDeviceReady = () => {
     window.MobileAccessibility.usePreferredTextZoom(false)
     console.log('MobileAccessibility')
   }
+  // window.MobileAccessibility.usePreferredTextZoom(false)
 }
 
 let onKeyboardHide = () => {

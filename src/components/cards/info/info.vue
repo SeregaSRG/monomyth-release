@@ -56,6 +56,7 @@ export default {
   },
   methods: {
     openCard (e) {
+      this.sound('OpenCard')
       this.isCardOpened = true
       this.$emit('openCard', true)
     },

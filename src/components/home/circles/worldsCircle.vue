@@ -34,6 +34,7 @@ export default {
   components: { firstWorld, secondWorld },
   methods: {
     setWorld (index) {
+      this.sound('ActsWorlds')
       if (this.currentWorld === index) {
         this.$router.push('/transitions?page=worlds')
       }
@@ -112,6 +113,32 @@ export default {
       50% {
         transform: scale(1.5, 1.5) translate3d(0,0,0);
       }
+    }
+  }
+
+  .light-bounce-enter-active {
+    transition: opacity .2s;
+    transform-origin: 50% 50%;
+    animation-duration: .3s;
+    animation-name: slidein;
+  }
+  .light-bounce-leave-active {
+    transition: opacity .2s ;
+  }
+  .light-bounce-enter, .light-bounce-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+  }
+  @keyframes slidein {
+    from {
+      transform: scale(1, 1) translate3d(0,0,0);
+    }
+
+    to {
+      transform: scale(1.03, 1.03) translate3d(0,0,0);
+    }
+
+    50% {
+      transform: scale(1.08, 1.08) translate3d(0,0,0);
     }
   }
 </style>

@@ -3,7 +3,7 @@
     <div class="options__buttons">
       <div class="options__button">
         <div class="options-button__icon">
-          <img src="../../../../assets/info/options/ads.png" class="options__ads-icon">
+          <img src="../../../../assets/info/en.png" class="options__ads-icon">
         </div>
         <div class="options-button__label">
           ENGLISH
@@ -11,7 +11,7 @@
       </div>
       <div class="options__button">
         <div class="options-button__icon">
-          <img src="../../../../assets/info/options/restore.png" class="options__restore-icon">
+          <img src="../../../../assets/info/ru.png" class="options__restore-icon">
         </div>
         <div class="options-button__label">
           РУССКИЙ

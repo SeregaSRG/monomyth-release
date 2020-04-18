@@ -16,6 +16,7 @@ export default {
   name: 'cosmogonicMenu',
   methods: {
     back () {
+      this.sound('AxisOut')
       this.$store.commit('status/SET_CYCLE', 1)
     }
   },

@@ -1,33 +1,35 @@
 <template>
   <div class="texts">
-    <div class="texts__header">
-      <div class="texts__header-content">
-        <router-link tag="div" to="home" class="back-button">
-          <img src="../assets/back-button.png">
-        </router-link>
-        <div class="title">
-          <img src="../assets/stages/STAGES.png">
+    <div class="main-wrapper">
+      <div class="texts__header">
+        <div class="texts__header-content">
+          <router-link tag="div" to="home" class="back-button">
+            <img src="../assets/back-button--black.png">
+          </router-link>
+          <div class="title">
+            <img src="../assets/stages/STAGES.png">
+          </div>
+          <!--  компенсируем размер места справа для центрирования тайтла с помощью флексбокс-->
+          <div class="back-button"></div>
         </div>
-        <!--  компенсируем размер места справа для центрирования тайтла с помощью флексбокс-->
-        <div class="back-button"></div>
       </div>
-    </div>
-    <div class="texts__content">
-    </div>
-    <div class="texts__footer">
-      <div class="dots">
-        <div class="dot"
-             v-for="(listItem, $index) in currentStageObject.cards"
-             :key="listItem.id"
-             :class="{ 'dot__active': $index === currentPage }"
-        ></div>
+      <div class="texts__content">
       </div>
-      <div class="ad"></div>
+      <div class="texts__footer">
+        <div class="dots">
+          <div class="dot"
+               v-for="(listItem, $index) in currentStageObject.cards"
+               :key="listItem.id"
+               :class="{ 'dot__active': $index === currentPage }"
+          ></div>
+        </div>
+        <div class="ad"></div>
+      </div>
+      <cards-list
+        :list="reversedCards"
+        :currentPage.sync="currentPage"
+      ></cards-list>
     </div>
-    <cards-list
-      :list="reversedCards"
-      :currentPage.sync="currentPage"
-    ></cards-list>
   </div>
 </template>
 
@@ -218,6 +220,7 @@ export default {
   },
   methods: {
     openCard (e) {
+      this.sound('OpenCard')
       this.isCardOpened = !this.isCardOpened
     }
   },
@@ -239,6 +242,7 @@ export default {
 <style lang="scss" scoped>
   @import "../components/card-swiper/texts-animations";
   @import "../css/main";
+
   .texts {
     height: 100vh;
     width: 100vw;
@@ -266,13 +270,15 @@ export default {
         align-items: center;
 
         .back-button {
-          width: 40px;
-          height: 40px;
+          width: 46px;
+          height: 46px;
 
           img {
             width: 100%;
             height: 100%;
           }
+
+          @include clickBounce();
         }
 
         .title {

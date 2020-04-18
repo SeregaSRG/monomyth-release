@@ -12,6 +12,7 @@
         </p>
       </div>
       <div class="card__content">
+        <div class="more-dots" v-if="!isCardOpened">...</div>
         <div class="card__content--quote" v-html="card.shortDescription">
         </div>
           <div class="card__content--text">
@@ -51,6 +52,7 @@ export default {
   },
   methods: {
     openCard (e) {
+      this.sound('OpenCard')
       this.isCardOpened = true
       this.$emit('openCard', true)
     },
@@ -92,12 +94,16 @@ export default {
 
 <style lang="scss" scoped>
   @import "../../css/animations";
+  .more-dots {
+    right: 14px;
+    bottom: 27px;
+  }
   .card-slide {
     flex-shrink: 0;
     width: 100%;
     height: 425px;
     display: flex;
-    padding-top: 2vw;
+    padding-top: 10px;
     .card--cycle--opened {
       .card__content {
         max-height: 10000px !important;
@@ -146,7 +152,7 @@ export default {
         }
       }
       margin: auto;
-      width: 270px;
+      width: 310px;
       // height: 425px;
       max-height: 425px;
       border-radius: 15px;
@@ -175,7 +181,7 @@ export default {
           max-width: 270px;
         }
         .card__title-icon {
-          height: 120px;
+          height: 150px;
           display: flex;
           img {
             height: 100%;

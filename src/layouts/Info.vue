@@ -4,7 +4,9 @@
       <router-link to="home" class="card-page__back-button">
         <img src="../assets/back-button.png">
       </router-link>
-      <div class="card-page__title">INFO</div>
+      <div class="card-page__title">
+        <img class="card-page__title-image" src="../assets/info/INFO.png">
+      </div>
     </div>
     <cards-list
       @cardChange="cardChange"
@@ -61,6 +63,7 @@ export default {
 
 <style lang="scss" scoped>
   @import "../css/main";
+
   .info {
     font-family: 'Calibri', sans-serif;
     width: 100%;
@@ -74,15 +77,15 @@ export default {
 
     .info__header {
       width: 100%;
+      max-width: 600px;
+      margin: 15px auto 5px auto;
       padding: 0 30px;
-      margin-top: 15px;
-      margin-bottom: 5px;
-      height: 40px;
+      height: 46px;
       display: flex;
 
       .card-page__back-button {
-        width: 40px;
-        height: 40px;
+        width: 46px;
+        height: 46px;
 
         img {
           width: 100%;
@@ -98,6 +101,11 @@ export default {
         align-items: center;
         font-size: 32px;
         color: #f2f2f2;
+
+        &-image {
+          height: 27px;
+          margin: auto;
+        }
       }
     }
 

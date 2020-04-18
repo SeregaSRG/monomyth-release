@@ -20,6 +20,7 @@ export default {
     width: 250px;
     height: 250px;
     position: absolute;
+    transform: scale(1.03);
   }
   .circle-half__wrapper {
     width: 252px;

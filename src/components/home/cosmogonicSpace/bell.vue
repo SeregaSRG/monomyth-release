@@ -1,7 +1,7 @@
 <template>
   <div class="bell"
   >
-    <div class="bell__button pointer-events-auto" @click.native="ding">
+    <div class="bell__button pointer-events-auto" :class="{'ding': ding}" @click="doDing">
     </div>
   </div>
 </template>
@@ -9,9 +9,21 @@
 <script>
 export default {
   name: 'acts',
+  data () {
+    return {
+      ding: false
+    }
+  },
   methods: {
-    ding () {
-      alert('Динь динь')
+    doDing () {
+      // alert('Динь динь')
+      if (!this.ding) {
+        this.ding = true
+        this.sound('Bell1')
+        setTimeout(() => {
+          this.ding = false
+        }, 1500)
+      }
     }
   },
   computed: {
@@ -36,8 +48,35 @@ export default {
     background-image: url("../../../assets/home/bell.png");
     background-position: center center;
     background-size: contain;
+    position: relative;
     @include resolution(320) {
       margin-top: 0;
+    }
+  }
+  .ding {
+    animation: clickBounce 1.5s;
+    @keyframes clickBounce {
+      from {
+        transform: scale(1) translate3d(0, 0, 0);
+      }
+      15% {
+        transform: scale(0.8) translate3d(0, 0, 0) rotate(0);
+      }
+      30% {
+        transform: scale(1) translate3d(0, 0, 0) rotate(25deg);
+      }
+      50% {
+        transform: rotate(-25deg);
+      }
+      70% {
+        transform: rotate(15deg);
+      }
+      85% {
+        transform: rotate(-10deg);
+      }
+      to {
+        transform: scale(1) translate3d(0, 0, 0) rotate(0);
+      }
     }
   }
 

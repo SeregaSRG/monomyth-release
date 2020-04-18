@@ -1,4 +1,4 @@
-
+@import "main";
 .options__buttons {
   width: 255px;
   margin-top: 16px;
@@ -10,6 +10,7 @@
     margin-bottom: 15px;
     display: flex;
     box-shadow: 7px 7px 13px rgba(0, 0, 0, .35);
+    @include clickBounce();
     &:last-child {
       margin-bottom: 0;
     }

@@ -68,6 +68,7 @@ export default {
   },
   methods: {
     openCard (e) {
+      this.sound('OpenCard')
       this.isCardOpened = !this.isCardOpened
     }
   },
@@ -83,7 +84,7 @@ export default {
 
 <style lang="scss" scoped>
   @import "../components/card-swiper/texts-animations";
-
+  @import "../css/main";
   .acts--color {
     background-color: #dab79b;
   }
@@ -116,13 +117,14 @@ export default {
         align-items: center;
 
         .back-button {
-          width: 40px;
-          height: 40px;
+          width: 44px;
+          height: 44px;
 
           img {
             width: 100%;
             height: 100%;
           }
+          @include clickBounce();
         }
 
         .title {

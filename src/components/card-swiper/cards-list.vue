@@ -79,6 +79,7 @@ export default {
   },
   methods: {
     openCard () {
+      this.sound('OpenCard')
       this.isCardOpened = true
     },
     closeCard () {
@@ -238,7 +239,7 @@ export default {
       transition: height .6s .2s;
       height: 100vh !important;
       overflow-y: scroll;
-      padding-bottom: 50px;
+      padding-bottom: 100px;
     }
     .card__content--quote {
       height: auto!important;

@@ -164,4 +164,8 @@ export default {
       }
     }
   }
+  .card__title-content {
+    font-family: 'Lobster', cursive;
+    font-size: 48px;
+  }
 </style>

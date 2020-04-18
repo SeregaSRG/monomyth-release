@@ -10,7 +10,8 @@ const state = {
   },
   currentCycleStage: null,
   transitionsTexts: false,
-  isDream: false
+  isDream: false,
+  lang: 'en'
 }
 
 const getters = {
@@ -21,10 +22,16 @@ const getters = {
   currentStage: (state) => state.currentStage,
   currentCycleStage: (state) => state.currentCycleStage,
   isTransitionsTexts: (state) => state.transitionsTexts,
-  isDream: (state) => state.isDream
+  isDream: (state) => state.isDream,
+  currentLang: (state) => state.lang
 }
 
 const mutations = {
+  SET_LANG (state, data) {
+    if (data === 'ru' || data === 'en') {
+      state.data = data
+    }
+  },
   SET_WORLD_INDEX (state, data) {
     state.currentCircle = 'world'
     state.currentWorldIndex = data

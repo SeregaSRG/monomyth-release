@@ -4,24 +4,23 @@
 >
   <div class="act__button"
        :class="{ covert: currentAct !== 1 && currentCircle === 'act'}"
-       @click="$store.commit('status/SET_ACT_INDEX', 1)"
-       v-ripple
+       @click="setAct(1)"
   >
-    <p class="act__text">Act <span class="act__text--bold">one</span></p>
+    <p class="act__text act__text--one"></p>
   </div>
   <div class="act__button"
        :class="{ covert: currentAct !== 2 && currentCircle === 'act'}"
-       @click="$store.commit('status/SET_ACT_INDEX', 2)"
+       @click="setAct(2)"
        v-ripple
   >
-    <p class="act__text">Act <span class="act__text--bold">two</span></p>
+    <p class="act__text act__text--two"></p>
   </div>
   <div class="act__button"
        :class="{ covert: currentAct !== 3 && currentCircle === 'act'}"
-       @click="$store.commit('status/SET_ACT_INDEX', 3)"
+       @click="setAct(3)"
        v-ripple
   >
-    <p class="act__text">Act <span class="act__text--bold">three</span></p>
+    <p class="act__text act__text--three"></p>
   </div>
 </div>
 </template>
@@ -36,11 +35,18 @@ export default {
     currentCircle () {
       return this.$store.getters['status/currentCircle']
     }
+  },
+  methods: {
+    setAct (index) {
+      this.$store.commit('status/SET_ACT_INDEX', index)
+      this.sound('ActsWorlds')
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+  @import "../../../css/main";
   .acts {
     width: 100%;
     height: 84px;
@@ -63,6 +69,7 @@ export default {
       overflow: hidden;
       // animation-name: bounce;
       animation: bounce 5s linear infinite;
+      @include clickBounce();
 
       @keyframes bounce1 {
         from {
@@ -136,9 +143,30 @@ export default {
       text-align: center;
       margin: auto;
       font-family: Calibri;
+      width: 100%;
+      height: 28px;
       &--bold {
         font-size: 16px;
         font-weight: bold;
+      }
+      &--one {
+        background-image: url("../../../assets/ONE.png");
+        background-size: contain;
+        background-position: center center;
+        background-repeat: no-repeat;
+      }
+      &--two {
+        background-image: url("../../../assets/TWO.png");
+        background-size: contain;
+        background-position: center center;
+        background-repeat: no-repeat;
+      }
+      &--three {
+        background-image: url("../../../assets/THREE.png");
+        background-size: contain;
+        background-position: center center;
+        background-repeat: no-repeat;
+        height: 26px;
       }
     }
 

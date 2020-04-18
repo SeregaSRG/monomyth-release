@@ -26,7 +26,7 @@
                covert: stage.name !== currentStage.name && currentCircle === 'stage',
                'label__text--big': stage.name === currentStage.name && currentCircle === 'stage'
              }" src="../../../assets/stages/labels/RETURN THRESHOLD.png" v-if="isDisplay($index, stage) && stage.id === 2"
-             style="height: 38px"
+             style="height: 37px"
         >
         <img :class="{
                covert: stage.name !== currentStage.name && currentCircle === 'stage',
@@ -74,14 +74,14 @@ export default {
         {
           id: 2,
           name: 'RETURN&nbsp;THRESHOLD',
-          text: '<span class="light-text" style="font-family: \'Lobster\', cursive; font-size: 20px;">The Crossing of the</span>Return Threshold',
+          text: '<span class="light-text" style="font-family: \'Lobster\', cursive; font-size: 20px;">The Crossing of the</span><span style="font-size: 32px; font-family: \'Lobster\', cursive;">Return Threshold</span>',
           imgText: require('../../../assets/stages/labels/RETURN THRESHOLD.png')
           // TODO просто уничтожить это
         },
         {
           id: 3,
           name: 'ROAD BACK',
-          text: 'The Road Back',
+          text: 'The<br>Road Back',
           imgText: require('../../../assets/stages/labels/ROAD BACK.png')
         },
         {
@@ -99,13 +99,13 @@ export default {
         {
           id: 6,
           name: 'THRESHOLD',
-          text: '<span class="light-text" style="font-family: \'Lobster\', cursive; font-size: 20px;">The Crossing of the</span>First Threshold',
+          text: '<span class="light-text" style="font-family: \'Lobster\', cursive; font-size: 20px;">The Crossing of the</span><span style="font-size: 32px; font-family: \'Lobster\', cursive;">First Threshold</span>',
           imgText: require('../../../assets/stages/labels/THRESHOLD.png')
         },
         {
           id: 7,
           name: 'AID',
-          text: 'Supernatural<br>Aid',
+          text: '<span style="font-size: 36px; font-family: \'Lobster\', cursive;">Supernatural<br>Aid</span>',
           imgText: require('../../../assets/stages/labels/AID.png')
         }
       ]
@@ -118,6 +118,7 @@ export default {
     setStage (stage) {
       if (this.currentCircle === '' || this.currentCircle === null || this.currentCircle === 'stage') {
         this.$store.commit('status/SET_STAGE', stage)
+        this.sound('Stages')
       }
     }
   },
@@ -193,7 +194,7 @@ export default {
         font-family: 'Calibri', sans-serif;
 
         &--big {
-          font-size: 20px;
+          transform: scale(1.2);
         }
       }
 

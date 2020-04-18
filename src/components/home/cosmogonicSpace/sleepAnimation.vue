@@ -39,7 +39,8 @@ export default {
       timer: null,
       timer2: null,
       timer3: null,
-      timer4: null
+      timer4: null,
+      currentCound: null
     }
   },
   methods: {
@@ -54,6 +55,7 @@ export default {
     }
   },
   mounted () {
+    this.currentCound = this.sound('Dream')
     this.timer = setInterval(() => {
       this.starList.push({
         id: Math.random(),
@@ -100,6 +102,7 @@ export default {
     clearInterval(this.timer2)
     clearInterval(this.timer3)
     clearInterval(this.timer4)
+    this.currentCound.pause()
   }
 }
 </script>
@@ -155,7 +158,7 @@ export default {
   .text {
     width: 290px;
     position: relative;
-    padding-top: 63px;
+    padding-top: 90px;
     margin: 0 auto;
     animation: text 6s linear;
     @keyframes text {
@@ -177,17 +180,17 @@ export default {
       font-family: 'Arial Rounded MT Bold';
       line-height: 1.1;
       &:nth-child(1) {
-        font-size: 18px;
+        font-size: 20px;
         padding-left: 10px;
       }
       &:nth-child(2) {
         line-height: 1.2;
-        font-size: 60px;
+        font-size: 62px;
         padding-left: 80px;
       }
       &:nth-child(3) {
         line-height: 0.8;
-        font-size: 40px;
+        font-size: 42px;
         padding-left: 30px;
       }
       &:nth-child(4) {
@@ -197,33 +200,33 @@ export default {
       }
       &:nth-child(5) {
         line-height: 1;
-        font-size: 74px;
+        font-size: 76px;
         padding-left: 8px;
       }
       &:nth-child(6) {
         line-height: 0.8;
-        font-size: 60px;
+        font-size: 62px;
         padding-left: 120px;
       }
       &:nth-child(7) {
         line-height: 0.8;
-        font-size: 44px;
+        font-size: 46px;
         padding-left: 44px;
       }
       &:nth-child(8) {
         line-height: 0.8;
-        font-size: 36px;
+        font-size: 38px;
         padding-left: 13px;
       }
       &:nth-child(9) {
         line-height: 0.8;
-        font-size: 74px;
+        font-size: 76px;
         padding-left: 0;
       }
       &:nth-child(10) {
         padding-top: 16px;
         line-height: 1.2;
-        font-size: 18px;
+        font-size: 20px;
         padding-left: 10px;
         transform: rotateY(180deg);
       }

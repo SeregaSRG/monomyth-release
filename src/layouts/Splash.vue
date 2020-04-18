@@ -1,12 +1,14 @@
 <template>
-<div class="Splash" @click="skipSplashScreen">
-  <div class="title__wrapper">
-    <h2 class="title title--low">Campbell’s</h2>
-    <h1 class="title title--high">Monomyth</h1>
+  <div class="Splash" @click="skipSplashScreen">
+    <div class="main-wrapper">
+      <div class="title__wrapper">
+        <h2 class="title title--low">Campbell’s</h2>
+        <h1 class="title title--high">Monomyth</h1>
+      </div>
+      <img class="logo" src="../../src/assets/ICON.png">
+      <p class="sign">by Michael Brizeli</p>
+    </div>
   </div>
-  <img class="logo" src="../../src/assets/ICON.png">
-  <p class="sign">by Michael Brizeli</p>
-</div>
 </template>
 
 <script>
@@ -38,6 +40,7 @@ export default {
     flex-direction: column;
     justify-content: space-between;
   }
+
   .title {
     font-family: 'Lobster', cursive;
     text-align: center;
@@ -49,6 +52,7 @@ export default {
     &--low {
       font-size: 38px;
     }
+
     &--high {
       font-size: 56px;
     }

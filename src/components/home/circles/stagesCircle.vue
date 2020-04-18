@@ -43,6 +43,7 @@ export default {
     openText () {
       if (this.currentStage.name !== null) {
         this.$router.push('/texts')
+        this.sound('ToСard')
       }
     }
   },
@@ -187,7 +188,7 @@ export default {
     margin: auto;
     width: 220px;
     font-family: 'Lobster', cursive;
-    font-size: 28px;
+    font-size: 40px;
     text-transform: none;
     &.fade-enter-active {
       transition-delay:.3s;

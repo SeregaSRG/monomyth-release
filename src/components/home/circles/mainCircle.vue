@@ -36,7 +36,7 @@
       <div class="pointer-events-auto cutted control" @click="$store.commit('status/SET_WORLD_INDEX', 2)"></div>
     </div>
     <div class="circle__layout pointer-events">
-      <div class="world-axis pointer-events-auto" @click="$store.commit('status/SET_CYCLE', 2)"></div>
+      <div class="world-axis pointer-events-auto" @click="setCycle"></div>
     </div>
     <div class="circle__layout pointer-events">
       <transition name="fade" mode="out-in">
@@ -50,12 +50,17 @@
 export default {
   name: 'main-circle',
   data () {
-    return {
-    }
+    return {}
   },
   computed: {
     openStage () {
       return this.$store.getters['status/currentCircle']
+    }
+  },
+  methods: {
+    setCycle () {
+      this.sound('AxisIn')
+      this.$store.commit('status/SET_CYCLE', 2)
     }
   }
 }
@@ -81,6 +86,7 @@ export default {
     display: flex;
     position: absolute;
   }
+
   .world-name {
     margin: auto;
     text-align: center;
@@ -88,39 +94,44 @@ export default {
     padding-top: 15px;
     -webkit-font-smoothing: antialiased;
     backface-visibility: hidden;
+
     &--selected {
       animation-duration: .3s;
       animation-name: slide1;
       font-weight: 600;
       transition: none;
       transition-delay: .3s;
-      transform: scale(1.3, 1.3) translate3d(0,0,0);
+      transform: scale(1.3, 1.3) translate3d(0, 0, 0);
       -webkit-backface-visibility: hidden;
     }
+
     @keyframes slide1 {
       from {
-        transform: scale(1, 1) translate3d(0,0,0);
+        transform: scale(1, 1) translate3d(0, 0, 0);
       }
       to {
-        transform: scale(1.3, 1.3) translate3d(0,0,0);
+        transform: scale(1.3, 1.3) translate3d(0, 0, 0);
         font-weight: 600;
       }
       50% {
-        transform: scale(1.5, 1.5) translate3d(0,0,0);
+        transform: scale(1.5, 1.5) translate3d(0, 0, 0);
       }
     }
   }
+
   .world-name__wrapper {
     width: 250px;
     height: 125px;
     display: flex;
     position: relative;
+
     .world-label-image {
       padding-top: 14px;
       height: 14px;
       margin: auto;
       box-sizing: content-box;
     }
+
     &--bottom {
       position: absolute;
       top: 125px;
@@ -135,6 +146,7 @@ export default {
       }
     }
   }
+
   .center-line {
     height: 5px;
     width: 100%;
@@ -147,7 +159,7 @@ export default {
   }
 
   // мена цикла
-  .cycle-leave-to  {
+  .cycle-leave-to {
     .world-axis {
       transition: .7s;
       transform: scale(1.13);
@@ -156,7 +168,8 @@ export default {
 
     .yellow-circle {
       transition: 1s;
-      transform: scale(3.5);
+      transform: scale(7);
+
       .arrow, .center-line {
         transition: .3s;
         opacity: 0;
@@ -166,7 +179,7 @@ export default {
     .title, .world-name__wrapper {
       transition: 1s, opacity .3s;
       opacity: 0;
-      transform: scale(1)!important;
+      transform: scale(1) !important;
     }
   }
 
@@ -175,8 +188,10 @@ export default {
       transition: 1s, opacity .5s;
       opacity: 1;
     }
+
     .yellow-circle {
       transform: scale(1);
+
       .arrow, .center-line {
         opacity: 1;
       }
@@ -184,22 +199,30 @@ export default {
   }
 
   .cycleout-enter-active {
-     .yellow-circle {
-       transition: 1s;
-       .arrow, .center-line {
-         animation: opacity 1s;
-         @keyframes opacity {
-           from { opacity: 0 }
-           50% { opacity: 0 }
-           to   { opacity: 1 }
-         }
-       }
-     }
-   }
+    .yellow-circle {
+      transition: 1s;
+
+      .arrow, .center-line {
+        animation: opacity 1s;
+        @keyframes opacity {
+          from {
+            opacity: 0
+          }
+          50% {
+            opacity: 0
+          }
+          to {
+            opacity: 1
+          }
+        }
+      }
+    }
+  }
 
   .cycleout-enter {
     .yellow-circle {
-      transform: scale(3.5);
+      transform: scale(6);
+
       .arrow, .center-line {
         opacity: 0;
       }
@@ -209,8 +232,8 @@ export default {
   // изначально разжатый заголовок
   .layout-wrapper {
     .title {
-      width: 170px!important;
-      font-size: 56px!important;
+      width: 170px !important;
+      font-size: 56px !important;
       transform: scale(0.28);
     }
   }
@@ -237,9 +260,11 @@ export default {
       height: 125px;
       position: absolute;
     }
+
     .control:nth-child(1) {
       top: 0;
     }
+
     .control:nth-child(2) {
       top: 125px;
     }
@@ -247,11 +272,13 @@ export default {
 
   .arrow {
     position: absolute;
+
     &--left {
       top: 12px;
       left: 22px;
       transform: rotate(180deg);
     }
+
     &--right {
       bottom: 12px;
       right: 22px;
@@ -260,12 +287,15 @@ export default {
   }
 
   .arrow-rotate {
-    animation: rotate 12s linear infinite;
+    animation: rotate 4s cubic-bezier(0.530, 0, 0.525, 1) infinite;
   }
 
   @keyframes rotate {
     from {
       transform: rotate(0);
+    }
+    60% {
+      transform: rotate(-360deg);
     }
     to {
       transform: rotate(-360deg);

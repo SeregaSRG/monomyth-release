@@ -1,6 +1,6 @@
 <template>
-  <div class="achievement" @click="openedDescription = !openedDescription">
-    <div class="achievement__icon">
+  <div class="achievement">
+    <div class="achievement__icon" @click="openedDescription = !openedDescription">
       <div class="achievement-icon__incomplete" v-if="!achievement.completed">
         <div class="incomplete__background">
           <img src="../../../../../assets/info/options/achievements/round.png">
@@ -55,6 +55,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  @import "../../../../../css/main";
   .achievement{
     width:246px;
     display: flex;
@@ -68,6 +69,7 @@ export default {
       width: 53px;
       height:53px;
       flex-shrink: 0;
+      @include clickBounce();
       .achievement-icon__incomplete{
         width: 100%;
         height:100%;
@@ -100,7 +102,7 @@ export default {
           width: 75px;
           margin-left: -6px;
           margin-top: -6px;
-          filter: drop-shadow(3px 3px 10px rgba(0,0,0,0.35));
+          filter: drop-shadow(2px 2px 5px rgba(0,0,0,0.35));
         }
       }
     }
@@ -110,6 +112,7 @@ export default {
       transform-style: preserve-3d;
       transition-property: transform;
       transition-duration: .3s;
+      display: flex;
       &.flip-leave{
         transform: rotateX(0deg);
       }
@@ -125,9 +128,11 @@ export default {
       .achievement-info__cloud{
         position: absolute;
         width:100%;
+        height: 100%;
         img{
           width: 100%;
-          filter: drop-shadow(0 0 10px rgba(0,0,0,0.35));
+          height: 100%;
+          filter: drop-shadow(2px 2px 5px rgba(0,0,0,0.35));
         }
       }
       &.name{
@@ -137,27 +142,27 @@ export default {
           font-family: "Calibri", sans-serif;
           font-weight: bold;
           position: relative;
-          height: 100%;
           display: flex;
           justify-content: space-between;
           align-items: center;
-          padding-left: 22px;
+          // padding-left: 22px;
           text-transform: uppercase;
+          margin: auto;
         }
       }
       &.description{
         .achievement-info__text{
-          font-size:23px;
+          font-size:22px;
           line-height: 1;
           font-family: "Calibri", sans-serif;
           font-weight: bold;
           position: relative;
-          height: 100%;
           display: flex;
           justify-content: space-between;
           align-items: center;
-          padding-left: 22px;
+          padding-left: 28px;
           color:#5e5e5e;
+          margin: auto;
         }
       }
     }

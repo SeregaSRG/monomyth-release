@@ -9,8 +9,8 @@
       <img src="../../../assets/info/gifts/line.png">
     </div>
     <div class="card__content">
-      <gift v-if="false"></gift>
-      <prize></prize>
+      <gift v-if="true"></gift>
+      <prize v-if="false"></prize>
     </div>
   </card>
 </template>
@@ -43,5 +43,8 @@ export default {
 
   .card__content {
     padding: 17px 14px;
+  }
+  .card__title-content {
+    font-family: 'Lobster', cursive;
   }
 </style>

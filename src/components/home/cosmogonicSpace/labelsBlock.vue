@@ -4,30 +4,12 @@
     >
       <div class="label"
            :class="{
-               'covert': currentCycleStage !== 1 && currentCircle === 'cycleStage',
-               'label--big': currentCycleStage === 1
-            }"
-           @click.stop="setStage(1)"
-      >
-      <img  src="../../../assets/home/cosmo-stages/WAKING.png">
-      </div>
-      <div class="label"
-           :class="{
-               'covert': currentCycleStage !== 2 && currentCircle === 'cycleStage',
-               'label--big':  currentCycleStage === 2
-            }"
-           @click.stop="setStage(2)"
-      >
-        <img  src="../../../assets/home/cosmo-stages/DISSOLUTIONS.png">
-      </div>
-      <div class="label"
-           :class="{
                'covert': currentCycleStage !== 3 && currentCircle === 'cycleStage',
-               'label--big':  currentCycleStage === 3
+               'label--big': currentCycleStage === 3
             }"
            @click.stop="setStage(3)"
       >
-        <img  src="../../../assets/home/cosmo-stages/DEEPSLEEP.png">
+      <img  src="../../../assets/home/cosmo-stages/WAKING.png">
       </div>
       <div class="label"
            :class="{
@@ -35,6 +17,24 @@
                'label--big':  currentCycleStage === 4
             }"
            @click.stop="setStage(4)"
+      >
+        <img  src="../../../assets/home/cosmo-stages/DISSOLUTIONS.png">
+      </div>
+      <div class="label"
+           :class="{
+               'covert': currentCycleStage !== 1 && currentCircle === 'cycleStage',
+               'label--big':  currentCycleStage === 1
+            }"
+           @click.stop="setStage(1)"
+      >
+        <img  src="../../../assets/home/cosmo-stages/DEEPSLEEP.png">
+      </div>
+      <div class="label"
+           :class="{
+               'covert': currentCycleStage !== 2 && currentCircle === 'cycleStage',
+               'label--big':  currentCycleStage === 2
+            }"
+           @click.stop="setStage(2)"
       >
         <img  src="../../../assets/home/cosmo-stages/EMANATIONS.png">
       </div>
@@ -57,10 +57,12 @@ export default {
   methods: {
     setStage (stage) {
       this.$store.commit('status/SET_CYCLE_STAGE', stage)
+      this.sound('Stages')
     },
     openTexts () {
       if (this.currentCycleStage) {
         this.$store.commit('status/SET_TRANSITIONS_TEXTS', true)
+        this.sound('ToСard')
       }
     }
   },
@@ -156,7 +158,7 @@ export default {
       align-items: center;
 
       &--big {
-       transform: scale(1.1);
+       transform: scale(1.25);
       }
 
       .label__text {

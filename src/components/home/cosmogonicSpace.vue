@@ -61,9 +61,11 @@ export default {
   mounted () {
     let el = document.getElementById('cosmogonicSpace')
     el.addEventListener('touchstart', (e) => {
-      this.timer = setTimeout(() => {
-        this.$store.commit('status/SET_DREAM', true)
-      }, 1700)
+      if (!this.$store.getters['status/currentCycleStage']) {
+        this.timer = setTimeout(() => {
+          this.$store.commit('status/SET_DREAM', true)
+        }, 1700)
+      }
     })
     document.addEventListener('touchend', (e) => {
       this.$store.commit('status/SET_DREAM', false)

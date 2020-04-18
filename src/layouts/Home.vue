@@ -1,35 +1,39 @@
 <template>
-<div class="Home"
-  :class="{ 'home--cycle': currentCycle === 2} "
->
-  <transition :name="currentCycle === 2 ? 'cycle' : 'cycleout'">
-    <div class="journey" v-if="currentCycle === 1" key="1">
-      <!-- <h1 class="title title--high" @click="$store.commit('status/SET_NO_CIRCLE')">HERO’S JOURNEY</h1> -->
-      <div class="title title--high"><img src="../assets/HEROSJOURNEY.png"></div>
-      <div class="journey__content" style="transform: scale(1);">
-        <home-menu></home-menu>
-        <work-space style="z-index: 10"></work-space>
-        <home-acts style="z-index: 1"></home-acts>
+  <div class="Home"
+       :class="{ 'home--cycle': currentCycle === 2} "
+  >
+    <transition :name="currentCycle === 2 ? 'cycle' : 'cycleout'">
+      <div class="journey" v-if="currentCycle === 1" key="1">
+        <!-- <h1 class="title title--high" @click="$store.commit('status/SET_NO_CIRCLE')">HERO’S JOURNEY</h1> -->
+        <div class="main-wrapper">
+          <div class="title title--high"><img src="../assets/HEROSJOURNEY.png"></div>
+          <div class="journey__content" style="transform: scale(1);">
+            <home-menu></home-menu>
+            <work-space style="z-index: 10"></work-space>
+            <home-acts style="z-index: 1"></home-acts>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="cosmogonic"
-         :class="{ 'isDream': isDream, 'isNotDream': isNotDream }"
-         v-if="currentCycle === 2" key="2">
-      <!-- <h1 class="title title--high" @click="$store.commit('status/SET_NO_CIRCLE')">COSMOGONIC CYCLE</h1> -->
-      <div class="title title--high"><img src="../assets/COSMOGONICCYCLE.png"></div>
-      <div class="cosmogonic__content" style="transform: scale(1);">
-        <cosmogonic-menu></cosmogonic-menu>
-        <cosmogonic-space></cosmogonic-space>
-        <bell></bell>
+      <div class="cosmogonic"
+           :class="{ 'isDream': isDream, 'isNotDream': isNotDream }"
+           v-if="currentCycle === 2" key="2">
+        <!-- <h1 class="title title--high" @click="$store.commit('status/SET_NO_CIRCLE')">COSMOGONIC CYCLE</h1> -->
+        <div class="main-wrapper">
+          <div class="title title--high"><img src="../assets/COSMOGONICCYCLE.png"></div>
+          <div class="cosmogonic__content" style="transform: scale(1);">
+            <cosmogonic-menu></cosmogonic-menu>
+            <cosmogonic-space></cosmogonic-space>
+            <bell></bell>
+          </div>
+        </div>
       </div>
-    </div>
-  </transition>
-  <sleep-animation v-if="isDream"></sleep-animation>
-  <transition name="fade">
-    <cycles v-if="isTransitionsTexts"></cycles>
-  </transition>
-  <ad v-if="false"></ad>
-</div>
+    </transition>
+    <sleep-animation v-if="isDream"></sleep-animation>
+    <transition name="fade">
+      <cycles v-if="isTransitionsTexts"></cycles>
+    </transition>
+    <ad v-if="false"></ad>
+  </div>
 </template>
 
 <script>
@@ -89,6 +93,7 @@ export default {
 
 <style lang="scss" scoped>
   @import "../css/main";
+
   .Home {
     padding-top: 36px;
     @include supports-safe-area-insets {
@@ -96,7 +101,7 @@ export default {
     }
     padding-bottom: 57px; // for ad banner
     position: relative;
-    width: 100vw;
+    width: 100%;
     min-height: 100vh;
     height: auto;
     overflow-y: scroll;
@@ -123,9 +128,11 @@ export default {
     justify-content: center;
     align-items: center;
     height: 40px;
+
     img {
       width: 85%;
     }
+
     &--high {
       font-size: 40px;
       text-shadow: 1px 1px 3px white;
@@ -141,8 +148,9 @@ export default {
     position: absolute;
     width: 100%;
   }
+
   .cycle-enter-active {
-    transition-delay: .7s!important;
+    transition-delay: .7s !important;
     transition: .3s;
     position: absolute;
     width: 100%;
@@ -157,6 +165,7 @@ export default {
     position: absolute;
     width: 100%;
   }
+
   .cycleout-enter-active {
     transition: 1s, opacity .3s;
     position: absolute;
@@ -169,10 +178,12 @@ export default {
 
   .cycleout-leave-to {
     z-index: 100;
+
     .title--high, .menu, .bell, .labels {
-      opacity: 0!important;
+      opacity: 0 !important;
     }
   }
+
   .isDream {
     animation: isDream .7s ease-out;
     @keyframes isDream {
@@ -184,6 +195,7 @@ export default {
       }
     }
   }
+
   .isNotDream {
     animation: isNotDream .7s ease-out;
     @keyframes isNotDream {

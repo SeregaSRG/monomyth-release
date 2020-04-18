@@ -27,6 +27,7 @@ export default {
   methods: {
     openTexts () {
       this.$router.push('/transitions?page=acts')
+      this.sound('ToСard')
     }
   }
 }
