@@ -8,11 +8,12 @@
         <img class="card-page__title-image" src="../assets/info/INFO.png">
       </div>
     </div>
-    <cards-list
+    <!--<cards-list
       @cardChange="cardChange"
       :cards="cards"
       :index.sync="index"
-    ></cards-list>
+    ></cards-list>-->
+    <cards-list></cards-list>
     <div class="info__buttons">
       <div class="info__buttons-container">
         <div class="info__button" :class="((index === 0) ? 'selected' : '')" @click="index = 0">
@@ -33,7 +34,7 @@
 export default {
   name: 'Options',
   components: {
-    cardsList: () => import('../components/cards/cards-list')
+    cardsList: () => import('../components/card-swiper/cards-list')
   },
   data () {
     return {

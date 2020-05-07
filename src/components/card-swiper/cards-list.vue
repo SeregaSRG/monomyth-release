@@ -28,6 +28,9 @@
             :class="{ 'isMoved': isMoved }"
           ></card>
         </template>
+        <template v-else-if="type === 'info'">
+          <card-info></card-info>
+        </template>
         <template v-else>
           <card-cycle
             v-for="listItem in list"
@@ -49,6 +52,7 @@
 <script>
 import card from './card'
 import cardCycle from './cardCycle'
+import cardInfo from './cardInfo'
 export default {
   name: 'CardsList',
   props: {
@@ -65,7 +69,7 @@ export default {
     }
   },
   components: {
-    card, cardCycle
+    card, cardCycle, cardInfo
   },
   data () {
     return {

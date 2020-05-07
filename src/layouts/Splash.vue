@@ -5,7 +5,10 @@
         <h2 class="title title--low">Campbell’s</h2>
         <h1 class="title title--high">Monomyth</h1>
       </div>
-      <img class="logo" src="../../src/assets/ICON.png">
+      <!--<img class="logo" src="../../src/assets/walk_anim.webm">-->
+      <video class="logo" autoplay loop>
+        <source src="../../src/assets/walk_anim.webm">
+      </video>
       <p class="sign">by Michael Brizeli</p>
     </div>
   </div>
@@ -24,7 +27,7 @@ export default {
     }
   },
   mounted () {
-    setTimeout(this.skipSplashScreen, 2000)
+    setTimeout(this.skipSplashScreen, 6000)
   }
 }
 </script>
@@ -59,8 +62,8 @@ export default {
   }
 
   .logo {
-    $width: 68px;
-    $height: 116px;
+    $width: 250px;
+    $height: 250px;
     position: absolute;
     width: $width;
     height: $height;
